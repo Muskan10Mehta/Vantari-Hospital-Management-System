@@ -1,8 +1,8 @@
 const mongoose  = require('mongoose');
 const dotenv = require("dotenv");
-dotenv.config({path: "./config.env"});
+dotenv.config();
 
-const uri = 'mongodb+srv://vantari2022:1910990681vantari@cluster0.xrpqnrk.mongodb.net/?retryWrites=true&w=majority';
+const uri = process.env.MONGO_URL;
 
 const connectDB = async () => {
     await mongoose
