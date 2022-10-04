@@ -52,17 +52,22 @@ const Organization = [
     item: "Patients",
     href: "#patients",
   },
+  {
+    item: "Manage Hospital",
+    href: "#manageHospital",
+  }
 ];
 
 const Admin = [
   {
-    item: "Admins",
-    href: "#admins",
-  },
-  {
-    item: "Hospitals",
+    item: "Manage Hospitals",
     href: "#hospital",
   },
+  {
+    item: "Hospital Admins",
+    href: "#admins",
+  },
+  
 ];
 
 const Sidebar = (props) => {
@@ -74,8 +79,8 @@ const Sidebar = (props) => {
 
   return (
     <>
-      <div className="ml-5 mt-10 sticky top-0 bg-white h-screen">
-        <aside class="w-56" aria-label="Sidebar">
+      <div className="ml-5 mt-10 bg-white h-screen">
+        <aside class="w-56 absolute" aria-label="Sidebar">
           <div class="overflow-y-auto py-4 px-3 border-2 bg-custom-green border-custom-green rounded text-white font-semibold">
             <ul class="space-y-2">
               <li>

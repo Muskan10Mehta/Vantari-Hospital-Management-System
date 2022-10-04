@@ -1,22 +1,54 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Signup() {
+    const [role, setRole] = useState();
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [phone_number, setPhonenumber] = useState('');
+    const [error, setError] = useState('');
 
-    const[gender, setGender] = useState();
-    
+    const handleSubmit = async (e) => {
+
+        e.preventDefault();
+        setError(false);
+
+        try {
+            const response = await axios.post('/auth/signup', {
+                name,
+                email,
+                password,
+                phone_number,
+                role,
+            });
+
+            if (response.data) {
+                window.location.replace('/login');
+                alert('Your account is registered, please login');
+            }
+        } catch (err) {
+            setError(err);
+
+        }
+    };
+
     return (
         <section class="bg-lime-200 w-full h-screen">
             <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                     <div class="p-6  space-y-4 md:space-y-6 sm:p-8">
                         <h1 class="text-xl font-bold leading-tight tracking-tight text-custom-green md:text-2xl dark:text-white">
-                            Sign up for your account
+                            Sign up htmlFor your account
                         </h1>
-                        <form class="grid grid-cols-2 gap-2 items-center space-y-4 md:space-y-6" action="#">
-                        <div className='col-span-2'>
+                        <form
+                            class="grid grid-cols-2 gap-2 items-center space-y-4 md:space-y-6"
+                            onSubmit={handleSubmit}
+                        >
+                            <div className="col-span-2">
                                 <label
-                                    for="email"
+                                    htmlFor="email"
                                     class="block mb-2 text-sm text-left font-medium text-custom-green dark:text-white"
                                 >
                                     Email
@@ -28,12 +60,13 @@ export default function Signup() {
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="name@company.com"
                                     required={true}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                             </div>
-                            
+
                             <div>
                                 <label
-                                    for="name"
+                                    htmlFor="name"
                                     class="block mb-2 text-sm text-left font-medium text-custom-green dark:text-white"
                                 >
                                     Name
@@ -45,11 +78,12 @@ export default function Signup() {
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="your name"
                                     required={true}
+                                    onChange={(e) => setName(e.target.value)}
                                 />
                             </div>
                             <div>
                                 <label
-                                    for="phonenumber"
+                                    htmlFor="phonenumber"
                                     class="block mb-2 text-sm text-left font-medium text-custom-green dark:text-white"
                                 >
                                     Phone Number
@@ -61,11 +95,12 @@ export default function Signup() {
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="10 digit phone number"
                                     required={true}
+                                    onChange={(e) => setPhonenumber(e.target.value)}
                                 />
                             </div>
-                            <div>
+                            {/* <div>
                                 <label
-                                    for="Gender"
+                                    htmlFor="Gender"
                                     class="block mb-2 text-sm text-left font-medium text-custom-green dark:text-white"
                                 >
                                     Gender
@@ -83,7 +118,7 @@ export default function Signup() {
                             </div>
                             <div>
                                 <label
-                                    for="bloodgroup"
+                                    htmlFor="bloodgroup"
                                     class="block mb-2 text-sm text-left font-medium text-custom-green dark:text-white"
                                 >
                                     Bloogroup
@@ -96,10 +131,10 @@ export default function Signup() {
                                     placeholder="bloodgroup"
                                     required={true}
                                 />
-                            </div>
-                            <div className='col-span-2'>
+                            </div> */}
+                            <div className="col-span-2">
                                 <label
-                                    for="password"
+                                    htmlFor="password"
                                     class="block mb-2 text-sm  text-left font-medium text-custom-green dark:text-white"
                                 >
                                     Password
@@ -111,36 +146,39 @@ export default function Signup() {
                                     placeholder="••••••••"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     required={true}
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                             </div>
 
-                            {/* <div class="flex items-center justify-between">
-                                <div class="flex items-start">
-                                    <div class="flex items-center h-5">
-                                        <input
-                                            id="remember"
-                                            aria-describedby="remember"
-                                            type="checkbox"
-                                            class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                                            required=""
-                                        />
-                                    </div> 
-                                    <div class="ml-3 text-sm">
-                                        <label
-                                            for="remember"
-                                            class="text-gray-500 dark:text-gray-300"
-                                        >
-                                            Remember me
-                                        </label>
-                                    </div>
-                                </div>
-                                <a
-                                    href="#"
-                                    class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
+                            <div>
+                                <label
+                                    htmlFor="role"
+                                    class="block mb-2 text-sm text-left font-medium text-custom-green dark:text-white"
                                 >
-                                    Forgot password?
-                                </a>
-                            </div> */}
+                                    Sign up as:
+                                </label>
+                                <select
+                                    required
+                                    value={role}
+                                    onChange={(e) => setRole(e.target.value)}
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                    name="gender"
+                                    id="gender"
+                                >
+                                    <option value="" disabled selected>
+                                        Select Role
+                                    </option>
+                                    <option value="Patient">Patient</option>
+                                    <option value="Admin">Admin</option>
+                                </select>
+                            </div>
+
+                            {error && (
+                                <p className="text-custom-yellow">
+                                    Username/email is already registered
+                                </p>
+                            )}
+
                             <div className="col-span-2">
                                 <button
                                     type="submit"
@@ -148,8 +186,9 @@ export default function Signup() {
                                 >
                                     Sign up
                                 </button>
+
                                 <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                                    Have an account? {' '}
+                                    Have an account?{' '}
                                     <Link
                                         to="/login"
                                         class="font-medium text-custom-green hover:underline dark:text-primary-500"

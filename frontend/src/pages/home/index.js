@@ -6,7 +6,7 @@ export default function Home() {
     <>
       <div className="grid grid-cols-2 gap-4">
         <div>
-        <img className="" src={mainImg}></img>
+        <img className="" src={mainImg} alt="a hand holding a device with hearbeat recordings"></img>
         </div>
        <div>
        <h1 className="text-black font-bold text-4xl mt-5 text-justify">MAKING HEALTHCARE <br></br> MORE ACCESSIBLE</h1>

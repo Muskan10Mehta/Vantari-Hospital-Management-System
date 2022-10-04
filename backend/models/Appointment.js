@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Create Schema
-const Appointment = new Schema({
-  appointment_start_time: {
-    type: date,
+const AppointmentSchema = new Schema({
+  appointment_date: {
+    type: Date,
     required: true
   },
-  appointment_end_time: {
-    type: date,
+  appointment_time: {
+    type: String,
     required: true
   },
   appointment_description: {
@@ -26,4 +26,4 @@ const Appointment = new Schema({
   
 });
 
-module.exports = mongoose.model("appointments", Appointment);
+module.exports = mongoose.model("Appointment", AppointmentSchema);

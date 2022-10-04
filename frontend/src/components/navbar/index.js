@@ -1,20 +1,31 @@
 import React from 'react';
-import logo from '../../assets/hospital.png';
 import outlineLogo from '../../assets/hospital-logo.png';
 import { Link } from 'react-router-dom';
-
-// import { Link } from 'react-router-dom';
-// import { useContext } from 'react';
-// import { Context } from '../../../context/Context';
+import { useContext } from 'react';
+import { Context } from '../../context/Context';
 
 const NavBar = (props) => {
-    const user = props.user;
-    // const { user, dispatch } = useContext(Context);
-    // const publicFolder = 'http://localhost:3001/postImages/';
+    const { user, dispatch } = useContext(Context);
 
-    // const handleLogout = () => {
-    //     dispatch({ type: 'LOGOUT' });
-    // };
+    const handleLogout = () => {
+        dispatch({ type: 'LOGOUT' });
+    };
+
+    const dashboardRoute = () => {
+        switch (user.role) {
+            case 'Patient':
+                return '/patient';
+            case 'Doctor':
+                return '/doctor';
+            case 'Admin':
+                return '/admin';
+            case 'Organization':
+                return '/organization';
+            default:
+                return '/';
+        }
+    };
+
     return (
         <>
             <header className="sticky top-0 z-50 relative">
@@ -32,36 +43,36 @@ const NavBar = (props) => {
                         </Link>
                         <div class="flex items-center lg:order-2">
                             {user ? (
-                              <>
-                              <Link
-                                     to="/dashboard"
-                                     class="text-gray-800  hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
-                                 >
-                                     Dashboard
-                                 </Link>
-                                 <Link
-                                     to="/logout"
-                                     class="text-gray-800  hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
-                                 >
-                                     Logout
-                                 </Link>
-                             </>
-                               
+                                <>
+                                    <Link to={dashboardRoute()}>
+                                        <button class="text-gray-800  hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800 dark:hover:text-white">
+                                            Dashboard
+                                        </button>
+                                    </Link>
+                                    <Link to="/login">
+                                        <button
+                                            onClick={handleLogout}
+                                            class="text-gray-800  hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800 dark:hover:text-white"
+                                        >
+                                            Logout
+                                        </button>
+                                    </Link>
+                                </>
                             ) : (
-                              <>
-                              <Link
-                                  to="/login"
-                                  class="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4"
-                              >
-                                  Sign in
-                              </Link>
-                              <Link
-                                  to="/signup"
-                                  class="text-gray-800  hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
-                              >
-                                  Sign up
-                              </Link>
-                              </>
+                                <>
+                                    <Link
+                                        to="/login"
+                                        class="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4"
+                                    >
+                                        Sign in
+                                    </Link>
+                                    <Link
+                                        to="/signup"
+                                        class="text-gray-800  hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
+                                    >
+                                        Sign up
+                                    </Link>
+                                </>
                             )}
                             <button
                                 data-collapse-toggle="mobile-menu-2"

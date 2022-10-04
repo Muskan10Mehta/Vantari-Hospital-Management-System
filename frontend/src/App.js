@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import NavBar from './components/navbar';
 import Home from './pages/home';
@@ -8,23 +7,40 @@ import Patient from './pages/patient';
 import Doctor from './pages/doctor';
 import Oraganization from './pages/organization';
 import Admin from './pages/admin';
-
+import { useContext } from 'react';
+import { Context } from './context/Context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
-    const user = true;
+    const { user } = useContext(Context);
+    const userRole = user ? user.role : '';
 
+    const role = () => {
+        switch (userRole) {
+            case 'Patient':
+                return <Patient isPatient="true" />;
+            case 'Doctor':
+                return <Doctor isDoctor="true" />;
+            case 'Admin':
+                return <Admin isAdmin="true" />;
+            case 'Organization':
+                return <Oraganization isOrganization="true" />;
+            default:
+                return <Login />;
+        }
+    };
     return (
         <div className="App">
-            
             <Router>
-                <NavBar user = {user}/>
+                <NavBar user={user} />
                 <Routes>
-                    <Route exact path="/" element={<Home />}></Route>
+                    <Route exact path="/" element={<Home />}>
+                        {' '}
+                    </Route>
                     <Route
                         exact
                         path="/login"
-                        element={user ? <Home /> : <Login/>}
+                        element={user ? role() : <Login />}
                     ></Route>
                     <Route
                         exact
@@ -34,22 +50,46 @@ function App() {
                     <Route
                         exact
                         path="/patient"
-                        element={user ? <Patient isPatient='true' /> : <Signup />}
+                        element={
+                            userRole === 'Patient' ? (
+                                <Patient isPatient="true" />
+                            ) : (
+                                <Signup />
+                            )
+                        }
                     ></Route>
                     <Route
                         exact
                         path="/doctor"
-                        element={user ? <Doctor /> : <Login />}
+                        element={
+                            userRole === 'Doctor' ? (
+                                <Doctor isDoctor="true" />
+                            ) : (
+                                <Login />
+                            )
+                        }
                     ></Route>
                     <Route
                         exact
                         path="/organization"
-                        element={user ? <Oraganization /> : <Login />}
+                        element={
+                            userRole === 'Organization' ? (
+                                <Oraganization isOranization="true" />
+                            ) : (
+                                <Login />
+                            )
+                        }
                     ></Route>
-                     <Route
+                    <Route
                         exact
                         path="/admin"
-                        element={user ? <Admin /> : <Login />}
+                        element={
+                            userRole === 'Admin' ? (
+                                <Admin isAdmin="true" />
+                            ) : (
+                                <Login />
+                            )
+                        }
                     ></Route>
                     {/* <Route
                         exact
