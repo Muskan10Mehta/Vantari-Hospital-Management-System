@@ -7,12 +7,11 @@ import ModalFooter from '../modal/modalFooter';
 import { useContext } from 'react';
 import { Context } from '../../context/Context';
 
-const ManageAdmin = () => {
+const ManageDoctor = () => {
+    
     const { user } = useContext(Context);
-
-    const role = 'Organization';
     const supervisor = user ? user._id : '';
-
+    const role = "Doctor";
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -38,7 +37,7 @@ const ManageAdmin = () => {
                 setEmail(' ');
                 setPassword(' ');
                 setPhonenumber(' ');
-                alert('Hospital Admin Profile Added');
+                alert('Doctor Profile Added');
             }
         } catch (err) {
             setError(err);
@@ -47,7 +46,7 @@ const ManageAdmin = () => {
 
     return (
         <>
-            <ModalBody title="Add New Hospital Admin" target="#staticBackdrop1" targetId="staticBackdrop1">
+            <ModalBody title="Add New Doctor" target="#staticBackdrop2" targetId="staticBackdrop2">
                 <form
                     className="grid grid-cols-2 gap-2 items-center"
                     onSubmit={handleSubmit}
@@ -69,7 +68,7 @@ const ManageAdmin = () => {
                             type="text"
                             name="orgname"
                             id="orgname"
-                            placeholder="Hospital admin name"
+                            placeholder="Doctor Name"
                             onChange={(e) => setName(e.target.value)}
                         ></ModalInput>
                     </div>
@@ -109,4 +108,4 @@ const ManageAdmin = () => {
     );
 };
 
-export default ManageAdmin;
+export default ManageDoctor;

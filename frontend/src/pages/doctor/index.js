@@ -1,5 +1,5 @@
 import React from "react";
-import InfoCard from "../../components/infocard";
+import DoctorProfile from "../../components/doctorProfile";
 import Sidebar from "../../components/sidebar";
 
 export default function Doctor(props) {
@@ -11,33 +11,8 @@ export default function Doctor(props) {
             </div>
             <div className="col-span-3 h-screen overflow-scroll">
                <div className="grid grid-cols-2 gap-4 auto-rows-auto mr-10">
-                <div>
-                    <InfoCard/>
+                <DoctorProfile/>
                 </div>
-                <div>
-                    <InfoCard/>
-                </div>
-                <div>
-                    <InfoCard/>
-                </div>
-                <div>
-                    <InfoCard/>
-                </div>
-                <div>
-                    <InfoCard/>
-                </div>
-                <div>
-                    <InfoCard/>
-                </div>
-                <div>
-                    <InfoCard/>
-                </div>
-                <div>
-                    <InfoCard/>
-                </div>
-                    
-               </div>
-
             </div>
         </div>
         

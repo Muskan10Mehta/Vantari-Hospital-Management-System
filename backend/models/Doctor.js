@@ -3,39 +3,42 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const DoctorSchema = new Schema({
-  user_id : {
+  userId: {
     type: String,
     required: true,
   },
-  doctor_speciality : {
+  name: {
+    type: String,
+    required: true,
+  }, 
+  qualification: {
     type: Array,
     required: true,
   },
-  doctor_qualification: {
-    type: Array,  
+  speciality: {
+    type: Array,
     required: true,
   },
-  doctor_experience: {
-    type: String,  
+  experience: {
+    type: String,
     required: true,
   },
-  doctor_consulting_language: {
-    type: Array,  
+  consultingLanguages: {
+    type: Array,
     required: true,
   },
-  doctor_photo:{
-    type:String,
-    default: " "
+  photo: {
+    type: String,
+    default: " ",
   },
-  doctor_speacialized_treatments: {
-    type: Array,  
+  specializedTreatments: {
+    type: Array,
     required: true,
   },
-  doctor_hospital_ids: {
-    type: Array,  
+  hospitalId: {
+    type: String, 
     required: true,
   },
-  
 });
 
 module.exports = mongoose.model("Doctor", DoctorSchema);

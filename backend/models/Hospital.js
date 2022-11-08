@@ -3,23 +3,23 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const HospitalSchema = new Schema({
-  hospital_name: {
+  name: {
     type: String,
     required: true,
   },
-  hospital_address: {
+  address: {
     type: String,
     required: true,
   },
-  hospital_phone_number: {
+  phoneNumber: {
     type: String,
     required: true,
   },
-  org_id: {
+  orgId: {
     type: String,
-    required: true,z
+    required: true,
   },
-  admin_id: {
+  adminId: {
     type: String,
     required: true,
   }

@@ -11,7 +11,6 @@ export default function Signup() {
     const [error, setError] = useState('');
 
     const handleSubmit = async (e) => {
-
         e.preventDefault();
         setError(false);
 
@@ -30,26 +29,25 @@ export default function Signup() {
             }
         } catch (err) {
             setError(err);
-
         }
     };
 
     return (
-        <section class="bg-lime-200 w-full h-screen">
-            <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-                <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-                    <div class="p-6  space-y-4 md:space-y-6 sm:p-8">
-                        <h1 class="text-xl font-bold leading-tight tracking-tight text-custom-green md:text-2xl dark:text-white">
-                            Sign up htmlFor your account
+        <section className="bg-lime-200 w-full h-screen">
+            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+                <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                    <div className="p-6  space-y-4 md:space-y-6 sm:p-8">
+                        <h1 className="text-xl font-bold leading-tight tracking-tight text-custom-green md:text-2xl dark:text-white">
+                            Sign up for your account
                         </h1>
                         <form
-                            class="grid grid-cols-2 gap-2 items-center space-y-4 md:space-y-6"
+                            className="grid grid-cols-2 gap-2 items-center space-y-4 md:space-y-6"
                             onSubmit={handleSubmit}
                         >
                             <div className="col-span-2">
                                 <label
                                     htmlFor="email"
-                                    class="block mb-2 text-sm text-left font-medium text-custom-green dark:text-white"
+                                    className="block mb-2 text-sm text-left font-medium text-custom-green dark:text-white"
                                 >
                                     Email
                                 </label>
@@ -57,7 +55,7 @@ export default function Signup() {
                                     type="email"
                                     name="email"
                                     id="email"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="name@company.com"
                                     required={true}
                                     onChange={(e) => setEmail(e.target.value)}
@@ -67,7 +65,7 @@ export default function Signup() {
                             <div>
                                 <label
                                     htmlFor="name"
-                                    class="block mb-2 text-sm text-left font-medium text-custom-green dark:text-white"
+                                    className="block mb-2 text-sm text-left font-medium text-custom-green dark:text-white"
                                 >
                                     Name
                                 </label>
@@ -75,7 +73,7 @@ export default function Signup() {
                                     type="text"
                                     name="name"
                                     id="name"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="your name"
                                     required={true}
                                     onChange={(e) => setName(e.target.value)}
@@ -84,7 +82,7 @@ export default function Signup() {
                             <div>
                                 <label
                                     htmlFor="phonenumber"
-                                    class="block mb-2 text-sm text-left font-medium text-custom-green dark:text-white"
+                                    className="block mb-2 text-sm text-left font-medium text-custom-green dark:text-white"
                                 >
                                     Phone Number
                                 </label>
@@ -92,7 +90,7 @@ export default function Signup() {
                                     type="text"
                                     name="phonenumber"
                                     id="phonenumber"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="10 digit phone number"
                                     required={true}
                                     onChange={(e) => setPhonenumber(e.target.value)}
@@ -101,7 +99,7 @@ export default function Signup() {
                             {/* <div>
                                 <label
                                     htmlFor="Gender"
-                                    class="block mb-2 text-sm text-left font-medium text-custom-green dark:text-white"
+                                    className="block mb-2 text-sm text-left font-medium text-custom-green dark:text-white"
                                 >
                                     Gender
                                 </label>
@@ -119,7 +117,7 @@ export default function Signup() {
                             <div>
                                 <label
                                     htmlFor="bloodgroup"
-                                    class="block mb-2 text-sm text-left font-medium text-custom-green dark:text-white"
+                                    className="block mb-2 text-sm text-left font-medium text-custom-green dark:text-white"
                                 >
                                     Bloogroup
                                 </label>
@@ -127,7 +125,7 @@ export default function Signup() {
                                     type="text"
                                     name="bloodgroup"
                                     id="bloodgroup"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="bloodgroup"
                                     required={true}
                                 />
@@ -135,7 +133,7 @@ export default function Signup() {
                             <div className="col-span-2">
                                 <label
                                     htmlFor="password"
-                                    class="block mb-2 text-sm  text-left font-medium text-custom-green dark:text-white"
+                                    className="block mb-2 text-sm  text-left font-medium text-custom-green dark:text-white"
                                 >
                                     Password
                                 </label>
@@ -144,7 +142,7 @@ export default function Signup() {
                                     name="password"
                                     id="password"
                                     placeholder="••••••••"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     required={true}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
@@ -153,7 +151,7 @@ export default function Signup() {
                             <div>
                                 <label
                                     htmlFor="role"
-                                    class="block mb-2 text-sm text-left font-medium text-custom-green dark:text-white"
+                                    className="block mb-2 text-sm text-left font-medium text-custom-green dark:text-white"
                                 >
                                     Sign up as:
                                 </label>
@@ -182,16 +180,16 @@ export default function Signup() {
                             <div className="col-span-2">
                                 <button
                                     type="submit"
-                                    class="w-full text-white bg-custom-green hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                    className="w-full text-white bg-custom-green hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                                 >
                                     Sign up
                                 </button>
 
-                                <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                                <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                                     Have an account?{' '}
                                     <Link
                                         to="/login"
-                                        class="font-medium text-custom-green hover:underline dark:text-primary-500"
+                                        className="font-medium text-custom-green hover:underline dark:text-primary-500"
                                     >
                                         Sign in
                                     </Link>

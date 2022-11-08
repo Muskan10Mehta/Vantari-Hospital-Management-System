@@ -24,6 +24,10 @@ const UserSchema = new Schema({
   role: {
     type: String,
     required: true,
+  },
+  supervisor: {
+    type: String,
+    required: false,
   }
 });
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import ManageAdmin from '../../components/manageAdmin';
+import ManageHospital from '../../components/manageHospital';
 import Sidebar from '../../components/sidebar';
 
 export default function Admin(props) {
@@ -10,8 +11,9 @@ export default function Admin(props) {
                     <Sidebar admin={props.isAdmin} />
                 </div>
                 <div className="col-span-3 h-screen overflow-scroll">
-                    <div className='mt-10 mx-5'>
-                        <ManageAdmin />
+                    <div className="mt-10 mx-5">
+                       <ManageAdmin/>
+                       <ManageHospital/>
                     </div>
                 </div>
             </div>

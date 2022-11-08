@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InfoCard = () => {
+const InfoCard = (props) => {
     return (
         <>
             <div className='mt-20'>
@@ -14,18 +14,18 @@ const InfoCard = () => {
                     </div>
                     <div className="pt-1">
                         <p className="font-bold uppercase text-left text-xl">
-                            DR. JIMIN
+                            {props.name}
                         </p>
                         <p className="text-custom-blue uppercase text-left text-sm">
-                            MBBS, BDS, MD, OBGYN, PG
+                           {props.qualification}
                         </p>
                     </div>
                     <div className="text-right pt-3 px-5">
-                        <p className="font-bold uppercase text-xs">
+                        <p className="font-bold uppercase text-left text-sm">
                             Experience
                         </p>
                         <p className="font-semibold text-custom-blue uppercase text-xs">
-                            10+ years
+                            {props.experience}
                         </p>
                     </div>
                     <div className="col-span-3 px-5">
@@ -33,30 +33,38 @@ const InfoCard = () => {
                             Specialities
                         </p>
                         <p className="font-semibold text-custom-blue uppercase text-left text-xs">
-                            Qualifications
+                        {props.speciality}
                         </p>
                     </div>
                     <div className="col-span-3 px-5">
                         <p className="font-bold uppercase text-left text-sm">
-                            Specialitzed treatment
+                            Specialitzed treatments
                         </p>
                         <p className="font-semibold text-custom-blue uppercase text-left text-xs">
-                            Qualifications
+                            {props.specializedTreatments}
                         </p>
                     </div>
                     <div className="col-span-2 px-5">
                         <p className="font-bold uppercase text-left text-sm">
-                            Hospitals
+                            Hospital
                         </p>
                         <p className="font-semibold text-custom-blue uppercase text-left text-xs">
-                            Qualifications
+                            {props.hospital}
+                        </p>
+                    </div>
+
+                    <div className="col-span-2 px-5">
+                        <p className="font-bold uppercase text-left text-sm">
+                            Languages
+                        </p>
+                        <p className="font-semibold text-custom-blue uppercase text-left text-xs">
+                            {props.consultingLanguages}
                         </p>
                     </div>
 
                     <div className="px-5">
                         <button className="bg-custom-blue font-bold text-white rounded py-2 px-3">
-                            {' '}
-                            Consult{' '}
+                            Consult
                         </button>
                     </div>
                 </div>
