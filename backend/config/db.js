@@ -9,6 +9,8 @@ const connectDB = async () => {
     .connect(uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      autoIndex: true,
+      family: 4, 
     })
     .then(console.log("Database connected"))
     .catch((err) => console.log(err));

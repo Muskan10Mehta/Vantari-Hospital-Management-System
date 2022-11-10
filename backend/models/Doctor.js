@@ -35,6 +35,26 @@ const DoctorSchema = new Schema({
     type: Array,
     required: true,
   },
+  startTime : {
+    type: String,
+    default: "09:00",
+  }, 
+  endTime : {
+    type: String, 
+    default : "19:00",
+  }, 
+  breakStart : {
+    type: String, 
+    default : "13:00"
+  },
+  breakEnd : {
+    type: String, 
+    default : "14:00"
+  },
+  hospitalName: {
+    type: String,
+    default: " ",
+  },
   hospitalId: {
     type: String, 
     required: true,

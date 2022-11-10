@@ -15,7 +15,7 @@ const ManageDoctor = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [phone_number, setPhonenumber] = useState('');
+    const [phoneNumber, setPhonenumber] = useState('');
     const [error, setError] = useState('');
 
     const handleSubmit = async (e) => {
@@ -27,7 +27,7 @@ const ManageDoctor = () => {
                 name,
                 email,
                 password,
-                phone_number,
+                phoneNumber,
                 role,
                 supervisor,
             });

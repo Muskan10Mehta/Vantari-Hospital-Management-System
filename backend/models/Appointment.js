@@ -3,31 +3,33 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const AppointmentSchema = new Schema({
-  appointment_date: {
+  date: {
     type: Date,
     required: true
   },
-  appointment_time: {
+  time: {
     type: String,
     required: true
   },
-  appointment_description: {
+  description: {
     type: String,
     required: true
   },
-  patient_id: {
+  patientId: {
     type: String,
     required: true
   },
-  doctor_id : {
+  doctorId : {
     type: String,
     required: true,
   },
   status : {
-    type: Boolean, 
-    default: false,
+    type: String, 
+    default: "PENDING", //pending, cancelled, done
   }
   
 });
+
+AppointmentSchema.index({date : 1, time : 1, doctorId: 1}, {unique : true, dropDups: true});
 
 module.exports = mongoose.model("Appointment", AppointmentSchema);

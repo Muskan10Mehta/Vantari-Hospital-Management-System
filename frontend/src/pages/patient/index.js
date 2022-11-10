@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import Sidebar from '../../components/sidebar';
 import InfoCard from '../../components/infocard';
 import axios from 'axios';
+import ManageAppointment from '../../components/manageAppointment';
 
 export default function Patient(props) {
 
@@ -48,6 +49,8 @@ export default function Patient(props) {
                     consultingLanguages = {doctor.consultingLanguages}
                     />
                 ))} 
+
+                <ManageAppointment/>
                </div>
             </div>
         </div>

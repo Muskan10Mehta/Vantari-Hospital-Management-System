@@ -30,13 +30,26 @@ router.get("/getHospital/:id", async (req, res) => {
   }
 });
 
-router.get("/getHospitals/:id", async (req, res) => {
-  try {
-    const hospitals = await Hospital.find({ orgId: req.params.id });
-    console.log("Sending get request data");
-    res.status(200).send(hospitals);
-  } catch (err) {
-    res.status(400).send(err);
+router.get("/getHospitals/", async (req, res) => {
+  const orgId = req.query.orgId;
+  const adminId = req.query.adminId;
+
+  if (adminId) {
+    try {
+      const hospitals = await Hospital.find({ adminId: adminId });
+      console.log("Sending get request data");
+      res.status(200).send(hospitals);
+    } catch (err) {
+      res.status(400).send(err);
+    }
+  } else if (orgId) {
+    try {
+      const hospitals = await Hospital.find({ orgId: orgId });
+      console.log("Sending get request data");
+      res.status(200).send(hospitals);
+    } catch (err) {
+      res.status(400).send(err);
+    }
   }
 });
 

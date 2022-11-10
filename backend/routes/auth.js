@@ -10,15 +10,12 @@ router.post("/signup", async (req, res) => {
     const hashPass = await bcrypt.hash(req.body.password, salt);
     const supervisor = req.body.supervisor ? true : false;
 
-    console.log( supervisor);
-
     if (supervisor) {
-      console.log(supervisor);
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
         password: hashPass,
-        phone_number: req.body.phone_number,
+        phoneNumber: req.body.phoneNumber,
         role: req.body.role,
         supervisor: req.body.supervisor,
       });
@@ -26,15 +23,15 @@ router.post("/signup", async (req, res) => {
       res.status(200).send(user);
 
     } else {
-      console.log( supervisor);
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
         password: hashPass,
-        phone_number: req.body.phone_number,
+        phoneNumber: req.body.phoneNumber,
         role: req.body.role,
         //supervisor: req.body.supervisor,
       });
+
       const user = await newUser.save();
       res.status(200).send(user);
     }
@@ -53,14 +50,16 @@ router.post("/login", async (req, res) => {
     });
 
     if (!user) {
-      res.status(400).json("Wrong credential");
+      res.status(400).json("User not found.");
+      return;
     }
     const validate = await bcrypt.compare(req.body.password, user.password);
 
     if (!validate) {
-      res.status(400).json("Wrong credential");
+      res.status(400).json("Wrong credential!");
+      return;
     }
-    const { password, email, phone_number, ...others } = user._doc;
+    const { password, email, phoneNumber, ...others } = user._doc;
 
     res.status(200).json(others);
   } catch (err) {

@@ -13,7 +13,7 @@ router.get("/getUser/:id", async (req, res) => {
   }
 })
 
-router.get("/getAdmins/:id", async (req, res) => {
+router.get("/getUsers/:id", async (req, res) => {
 
     try {
       const users = await User.find({"supervisor" : req.params.id});
